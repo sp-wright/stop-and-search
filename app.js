@@ -1,6 +1,6 @@
 const googleAPI = {
-  url: "https://maps.googleapis.com/maps/api/geocode/json?address=",
-  api: "AIzaSyBgSeAT2RWVWnSGRb9MUW-0sHSObRjQ-CU",
+  url: "https://api.mapbox.com/geocoding/v5/mapbox.places/",
+  api: "pk.eyJ1Ijoic3RldmV3cmlnaHQ1NCIsImEiOiJja2FhenJmM20weWNrMzBsNW1jMmZubTZuIn0.I28C6qzjvzrJSGAFvv4uZA",
 };
 
 const policeAPI = {
@@ -25,21 +25,24 @@ search.addEventListener("submit", (e) => {
 });
 
 let coordinates = (i) => {
-  fetch(`${googleAPI.url}${i}&key=${googleAPI.api}`)
+  fetch(`${googleAPI.url}${i}.json?access_token=${googleAPI.api}`)
     .then((data) => {
       return data.json();
     })
     .then((data) => {
       searchPolice(data);
     })
-    .catch(() => divMessage("I can't seem to find that address. Please try another."));
+    .catch((data) => {
+      divMessage("I can't seem to find that address. Please try another.");
+      console.log(data);
+    });
 };
 
 let searchPolice = (data) => {
-  let address = data.results[0].formatted_address;
+  let address = data.features[0].place_name;
   divMessage(`<strong>Showing results for:</strong> ${address}`);
-  let coords = data.results[0].geometry.location;
-  fetch(`${policeAPI.url}lat=${coords.lat}&lng=${coords.lng}`)
+  let coords = data.features[0].center;
+  fetch(`${policeAPI.url}lat=${coords[1]}&lng=${coords[0]}`)
     .then((data) => {
       return data.json();
     })
