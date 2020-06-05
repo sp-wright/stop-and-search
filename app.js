@@ -1,6 +1,6 @@
-const googleAPI = {
+const mapboxAPI = {
   url: "https://api.mapbox.com/geocoding/v5/mapbox.places/",
-  api: "pk.eyJ1Ijoic3RldmV3cmlnaHQ1NCIsImEiOiJja2FhenJmM20weWNrMzBsNW1jMmZubTZuIn0.I28C6qzjvzrJSGAFvv4uZA",
+  api: "pk.eyJ1Ijoic3RldmV3cmlnaHQ1NCIsImEiOiJja2Iya3NieWkwMDB3MnB0YnJxNHc0ZWFzIn0.lJp33AgjVmLqr-oea0X4jw",
 };
 
 const policeAPI = {
@@ -25,7 +25,7 @@ search.addEventListener("submit", (e) => {
 });
 
 let coordinates = (i) => {
-  fetch(`${googleAPI.url}${i}.json?access_token=${googleAPI.api}`)
+  fetch(`${mapboxAPI.url}${i}.json?access_token=${mapboxAPI.api}`)
     .then((data) => {
       return data.json();
     })
