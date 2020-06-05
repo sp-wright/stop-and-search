@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stop & Search Database</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/92a286bacb.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container-titles">
+      <h1>Stop & Search Database</h1>
+    </div>
+    <div class="color-container">
+      <div class="silver"></div>
+      <div class="blue"></div>
+      <div class="orange"></div>
+      <div class="blue"></div>
+      <div class="silver"></div>
+    </div>
+    <div class="content-container">
+      <div class="app-content">
+        <h2 class="search-title">Search the UK <span>Stop & Search</span> records from the past month.</h2>
+        <form id="search-form">
+          <input type="text" name="seach" id="search" autocomplete="off" placeholder="enter a postcode..." />
+          <button type="submit" class="search-btn">Search</button>
+        </form>
+        <div class="place-output"></div>
+        <div id="app-output"></div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>

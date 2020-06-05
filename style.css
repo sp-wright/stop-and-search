@@ -1,0 +1,237 @@
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Work Sans", sans-serif;
+  min-height: 100vh;
+  background-color: rgb(241, 241, 241);
+}
+
+/******************************** COLOURED BORDER ********************************/
+
+.silver {
+  height: 2vh;
+  background-color: rgb(224, 231, 239);
+}
+
+.blue {
+  height: 2vh;
+  background-color: rgb(27, 108, 200);
+}
+
+.orange {
+  height: 2vh;
+  background-color: rgb(253, 97, 61);
+}
+
+/******************************** CONTENT CONTAINER ********************************/
+
+.content-container {
+  min-height: 90vh;
+  justify-content: center;
+  align-items: center;
+}
+
+/******************************** IMAGE CONTAINER ********************************/
+
+.container-titles {
+  position: fixed;
+  top: 50%;
+  transform: translate(0, -50%);
+  display: flex;
+  min-height: 50vh;
+  max-width: 30vw;
+  align-items: center;
+  background-image: url(images/action-asphalt-automobile-automotive-303313.jpg);
+  background-color: rgba(255, 255, 255, 0.4);
+  background-blend-mode: lighten;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+  border-radius: 0 100px 100px 0;
+}
+
+.container-titles h1 {
+  font-size: 3rem;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  filter: drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.712));
+}
+
+/******************************** PRINT BTN ********************************/
+
+.print-div {
+  background-color: rgb(253, 97, 61);
+  position: fixed;
+  top: 85%;
+  left: 10%;
+  filter: drop-shadow(3px 3px 10px rgba(65, 65, 65, 0.377));
+  padding: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.print-div a {
+  color: white;
+  text-decoration: none;
+}
+
+/******************************** APP CONTAINER ********************************/
+
+.app-content {
+  margin-left: 30vw;
+  padding-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 70vh;
+}
+
+.search-title {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+.search-title span {
+  color: rgb(27, 108, 200);
+  font-weight: 600;
+}
+
+/***************** INPUT *****************/
+
+.search-field {
+  display: flex;
+  align-items: center;
+}
+
+#search {
+  font-size: 1rem;
+  border: solid 1px rgba(0, 0, 0, 0.171);
+  border-radius: 5px 0 0 5px;
+  padding: 0.5rem;
+  width: 20rem;
+  height: 40px;
+}
+
+.search-btn {
+  background-color: rgb(253, 97, 61);
+  color: #fff;
+  margin-left: -6px;
+  height: 40px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+/***************** PLACE OUTPUT *****************/
+
+.place-output {
+  background-color: white;
+  text-align: center;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 5px;
+  filter: drop-shadow(2px 2px 3px rgba(39, 39, 39, 0.37));
+  display: none;
+  line-height: 1.5rem;
+}
+
+.place-output strong {
+  color: rgb(253, 97, 61);
+}
+
+.no-records {
+  color: rgb(27, 108, 200);
+}
+
+/***************** FORM OUTPUT *****************/
+
+.output-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
+.results-info {
+  font-size: 0.75rem;
+  width: 290px;
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  padding: 0.5rem 0;
+  background-color: #fff;
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 5px;
+  filter: drop-shadow(3px 3px 10px rgba(65, 65, 65, 0.24));
+}
+
+.results-info h3 {
+  padding: 0.25rem 0;
+  font-weight: 400;
+  text-align: right;
+}
+
+.results-info strong {
+  color: rgb(27, 108, 200);
+}
+
+.results-info h4 {
+  color: rgb(27, 108, 200);
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  border-top: solid 1px black;
+}
+
+.results-info p {
+  padding: 0.25rem 0;
+  text-align: right;
+}
+
+/******************************** MEDIA QUERIES ********************************/
+
+@media (max-width: 941px) {
+  .container-titles {
+    display: none;
+  }
+
+  .app-content {
+    margin-left: 0;
+    padding-top: 1.5rem;
+  }
+
+  #search {
+    width: 15rem;
+  }
+
+  .search-title {
+    font-size: 1.25rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+
+  .place-output {
+    margin: 1rem 1rem 0 1rem;
+    width: 90%;
+    font-size: 0.7rem;
+  }
+
+  .output-container {
+    justify-content: center;
+  }
+
+  .print-div {
+    display: none;
+  }
+}
+
+@media (min-width: 2300px) {
+  .container-titles {
+    min-width: 30vw;
+  }
+}
