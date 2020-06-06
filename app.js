@@ -11,26 +11,41 @@ const search = document.querySelector("#search-form");
 const output = document.querySelector("#app-output");
 const placeOutput = document.querySelector(".place-output");
 const searchInput = document.querySelector("#search");
+const yearInput = document.querySelector("#year");
+const monthInput = document.querySelector("#month");
 
 search.addEventListener("submit", (e) => {
   e.preventDefault();
+  let d = new Date();
+  let month;
+  let year;
+  if (monthInput.value === "none") {
+    month = d.getMonth() - 1;
+  } else {
+    month = monthInput.value;
+  }
+  if (yearInput.value === "none") {
+    year = d.getFullYear();
+  } else {
+    year = yearInput.value;
+  }
+  let formattedDate = `&date=${year}-${month}`;
   if (searchInput.value.length > 0) {
     output.innerHTML = "";
     placeOutput.innerHTML = "";
     let str = e.target[0].value;
     str = str.replace(/\s+/g, "");
-    coordinates(str);
-    e.target[0].value = "";
+    coordinates(str, formattedDate);
   }
 });
 
-let coordinates = (i) => {
+let coordinates = (i, d) => {
   fetch(`${mapboxAPI.url}${i}.json?access_token=${mapboxAPI.api}`)
     .then((data) => {
       return data.json();
     })
     .then((data) => {
-      searchPolice(data);
+      searchPolice(data, d);
     })
     .catch((data) => {
       divMessage("I can't seem to find that address. Please try another.");
@@ -38,11 +53,11 @@ let coordinates = (i) => {
     });
 };
 
-let searchPolice = (data) => {
+let searchPolice = (data, d) => {
   let address = data.features[0].place_name;
   divMessage(`<strong>Showing results for:</strong> ${address}`);
   let coords = data.features[0].center;
-  fetch(`${policeAPI.url}lat=${coords[1]}&lng=${coords[0]}`)
+  fetch(`${policeAPI.url}lat=${coords[1]}&lng=${coords[0]}${d}`)
     .then((data) => {
       return data.json();
     })
